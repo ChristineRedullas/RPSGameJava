@@ -54,13 +54,13 @@ public class Main {
 
     }
 
-    static int points(){
-        if(playerWin() == true){
-            playerPoints++;
-        }else if(playerWin() == false){
-            compPoints++;
-        }else{
-            System.out.println("It's a tie!");
-        }
-    }
+//    static int points(){
+//        if(playerWin() == true){
+//            playerPoints++;
+//        }else if(playerWin() == false){
+//            compPoints++;
+//        }else{
+//            System.out.println("It's a tie!");
+//        }
+//    }
 }
