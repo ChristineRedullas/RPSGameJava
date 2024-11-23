@@ -18,11 +18,11 @@ public class Main {
             int randomNum = rand.nextInt(3);
 
             if(randomNum == 0) {
-                compMove = "Rock";
+                compMove = "rock";
             }else if(randomNum == 1) {
-                compMove = "Paper";
+                compMove = "paper";
             }else {
-                compMove = "Scissor";
+                compMove = "scissor";
             }
 
             System.out.println("Computer plays " + compMove);
@@ -39,6 +39,10 @@ public class Main {
             }
 
             System.out.println("Player points: " + playerPoints + "\nComputer points: " + compPoints);
+
+            System.out.println("Your move.");
+
+            move = scanner.nextLine().toLowerCase();
 
 
         }
