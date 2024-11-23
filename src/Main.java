@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Random rand = new Random();
-        int randomNum = rand.nextInt(3);
+        String compMove;
         int playerPoints = 0;
         int compPoints = 0;
 
@@ -14,10 +14,9 @@ public class Main {
 
         String move = scanner.nextLine().toLowerCase();
 
-        if(move.equalsIgnoreCase("exit")) {
-            System.exit(0);
-        }else{
-            String compMove;
+        while (!move.equals("exit")) {
+            int randomNum = rand.nextInt(3);
+
             if(randomNum == 0) {
                 compMove = "Rock";
             }else if(randomNum == 1) {
@@ -29,10 +28,21 @@ public class Main {
             System.out.println("Computer plays " + compMove);
 
 
-
+            if (playerWin(move, compMove)) {
+                playerPoints++;
+            } else {
+                if(move.equals(compMove)) {
+                    System.out.println("It's a tie!");
+                }else{
+                    compPoints++;
+                }
+            }
 
             System.out.println("Player points: " + playerPoints + "\nComputer points: " + compPoints);
+
+
         }
+
 
 
 
@@ -54,13 +64,5 @@ public class Main {
 
     }
 
-//    static int points(){
-//        if(playerWin() == true){
-//            playerPoints++;
-//        }else if(playerWin() == false){
-//            compPoints++;
-//        }else{
-//            System.out.println("It's a tie!");
-//        }
-//    }
+
 }
