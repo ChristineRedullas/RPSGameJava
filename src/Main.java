@@ -5,50 +5,52 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Random rand = new Random();
-        String compMove;
         int playerPoints = 0;
         int compPoints = 0;
 
-        System.out.println("Rock Paper Scissor Game!" + "\nRules: Enter Rock, Paper, or Scissor. \nType 'exit' to exit game");
+        System.out.println("Rock Paper Scissor Game! \nRules: Enter Rock, Paper, or Scissor. \nType 'exit' to exit game");
 
         String move = scanner.nextLine().toLowerCase();
 
+
         while (!move.equals("exit")) {
-            int randomNum = rand.nextInt(3);
 
-            if(randomNum == 0) {
-                compMove = "rock";
-            }else if(randomNum == 1) {
-                compMove = "paper";
-            }else {
-                compMove = "scissor";
-            }
+            if (!move.equalsIgnoreCase("rock") && !move.equalsIgnoreCase("paper") && !move.equalsIgnoreCase("scissor")) {
+                System.out.println("Invalid move. Try again.");
+            }else{
 
-            System.out.println("Computer plays " + compMove);
-
-
-            if (playerWin(move, compMove)) {
-                playerPoints++;
-            } else {
-                if(move.equals(compMove)) {
-                    System.out.println("It's a tie!");
-                }else{
+                if(playerWin(move, computerMove(move))){
+                    playerPoints++;
+                }else if(compWin(move, computerMove(move))){
                     compPoints++;
+                }else{
+                    System.out.println("Its a tie!");
                 }
+
+                System.out.println("Player points: " + playerPoints + "\nComputer points: " + compPoints);
+                System.out.println("Your move.");
             }
-
-            System.out.println("Player points: " + playerPoints + "\nComputer points: " + compPoints);
-
-            System.out.println("Your move.");
 
             move = scanner.nextLine().toLowerCase();
 
-
         }
 
+    }
 
+    static String computerMove(String compMove) {
+        Random rand = new Random();
+        int randomNum = rand.nextInt(3);
 
+        if(randomNum == 0) {
+            compMove = "rock";
+        }else if(randomNum == 1) {
+            compMove = "paper";
+        }else {
+            compMove = "scissor";
+        }
+        System.out.println("Computer move: " + compMove);
+
+        return compMove;
 
     }
 
@@ -66,6 +68,21 @@ public class Main {
             return false;
         }
 
+    }
+
+    static boolean compWin(String move, String compMove){
+        if(move.equals("scissor") && compMove.equalsIgnoreCase("rock")) {
+            System.out.println("Computer win!");
+            return true;
+        }else if(move.equals("paper") && compMove.equalsIgnoreCase("scissor")) {
+            System.out.println("Computer win!");
+            return true;
+        }else if(move.equals("rock") && compMove.equalsIgnoreCase("paper")) {
+            System.out.println("Computer win!");
+            return true;
+        }else{
+            return false;
+        }
     }
 
 
