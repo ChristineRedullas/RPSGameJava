@@ -18,10 +18,10 @@ public class Main {
             if (!move.equalsIgnoreCase("rock") && !move.equalsIgnoreCase("paper") && !move.equalsIgnoreCase("scissor")) {
                 System.out.println("Invalid move. Try again.");
             }else{
-
-                if(playerWin(move, computerMove(move))){
+                String compMove = computerMove();
+                if(playerWin(move, compMove)){
                     playerPoints++;
-                }else if(compWin(move, computerMove(move))){
+                }else if(compWin(move, compMove)){
                     compPoints++;
                 }else{
                     System.out.println("Its a tie!");
@@ -37,9 +37,10 @@ public class Main {
 
     }
 
-    static String computerMove(String compMove) {
+    static String computerMove() {
         Random rand = new Random();
         int randomNum = rand.nextInt(3);
+        String compMove = "";
 
         if(randomNum == 0) {
             compMove = "rock";
